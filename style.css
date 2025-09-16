@@ -1,30 +1,32 @@
+/* --- Variáveis CSS para Cores (Modo Escuro como Padrão para a Vibe Neon) --- */
 :root {
-    --global-background-start: #2C003E; 
-    --global-background-end: #080016; 
+    --global-background-start: #2C003E; /* Roxo escuro */
+    --global-background-end: #080016; /* Quase preto */
     
-    --panel-background: rgba(30, 30, 40, 0.9); 
-    --panel-border: rgba(138, 43, 226, 0.3); 
-    --text-color: #E0E0E0; 
-    --secondary-text-color: #B0B0B0; 
+    --panel-background: rgba(30, 30, 40, 0.9); /* Fundo dos painéis translúcido */
+    --panel-border: rgba(138, 43, 226, 0.3); /* Borda roxa suave */
+    --text-color: #E0E0E0; /* Texto claro */
+    --secondary-text-color: #B0B0B0; /* Texto secundário */
     
-    --input-background: rgba(45, 45, 60, 0.7); 
-    --input-border: #6A1B9A; 
-    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7); 
+    --input-background: rgba(45, 45, 60, 0.7); /* Fundo dos inputs translúcido */
+    --input-border: #6A1B9A; /* Borda roxa dos inputs */
+    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7); /* Sombra roxa no foco */
 
-    --accent-primary: #BB86FC; 
-    --accent-secondary: #03DAC6;
-    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); 
+    --accent-primary: #BB86FC; /* Roxo vibrante (principal) */
+    --accent-secondary: #03DAC6; /* Ciano/Azul (secundário) */
+    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Sombra para texto de destaque */
     
-    --button-gradient-start: #FF00FF; 
-    --button-gradient-end: #8A2BE2; 
+    --button-gradient-start: #FF00FF; /* Rosa neon */
+    --button-gradient-end: #8A2BE2; /* Roxo brilhante */
     --button-hover-gradient-start: #8A2BE2;
-    --button-hover-gradient-end: #00F6FF; 
-    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5); 
-    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7); 
+    --button-hover-gradient-end: #00F6FF; /* Azul ciano neon */
+    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Sombra rosa */
+    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7); /* Sombra roxa */
 
-    --item-background: rgba(40, 40, 50, 0.8); 
-    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); 
+    --item-background: rgba(40, 40, 50, 0.8); /* Fundo de itens da lista */
+    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra suave para itens */
 
+    /* Variáveis para o modo claro */
     --light-background-color: #F8F9FA;
     --light-panel-background: #FFFFFF;
     --light-text-color: #212529;
@@ -36,6 +38,7 @@
     --light-item-background: #FFFFFF;
 }
 
+/* --- Tema Escuro (Padrão para a vibe futurista) --- */
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
@@ -60,17 +63,19 @@ body::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at 70% 30%, rgba(187, 134, 252, 0.1), transparent 50%),
-    radial-gradient(circle at 30% 80%, rgba(3, 218, 198, 0.08), transparent 50%);
+                radial-gradient(circle at 30% 80%, rgba(3, 218, 198, 0.08), transparent 50%);
     pointer-events: none;
     z-index: -1;
     animation: backgroundGlow 8s infinite alternate;
 }
 
+/* Animação para o brilho de fundo */
 @keyframes backgroundGlow {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(1.05); opacity: 0.8; }
 }
 
+/* --- Modo Claro (Quando o usuário alternar) --- */
 body.light-mode-active { 
     background: var(--light-background-color);
     color: var(--light-text-color);
@@ -148,7 +153,7 @@ body.light-mode-active .cv-item ul li {
     border: 0;
 }
 
-
+/* --- Estilos Globais e Layout Principal --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -177,6 +182,7 @@ body.app-started .app-header {
     transform: translateY(0);
 }
 
+/* --- App Header (Cabeçalho da Aplicação) --- */
 .app-header {
     text-align: center;
     padding: 3rem 1rem 2rem;
@@ -204,6 +210,7 @@ body.app-started .app-header {
     color: var(--secondary-text-color);
 }
 
+/* --- Tela de Boas-Vindas --- */
 #welcome-screen {
     position: fixed;
     top: 0;
@@ -295,6 +302,7 @@ body.app-started .app-header {
     to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
 }
 
+/* --- Formulários e Prévia do Currículo --- */
 .form-panel, .cv-document {
     background-color: var(--panel-background);
     border-radius: 20px;
@@ -439,6 +447,7 @@ input:focus, textarea:focus {
     transform: scale(1.2);
 }
 
+/* --- Painel de Prévia (Currículo) --- */
 .preview-panel {
     flex: 1;
     display: flex;
@@ -603,6 +612,7 @@ input:focus, textarea:focus {
     box-shadow: var(--button-hover-shadow);
 }
 
+/* --- Estilos para o modo de impressão (PDF) --- */
 body.print-mode {
     background-color: #FFFFFF !important;
     color: #000000 !important;
@@ -679,64 +689,55 @@ body.print-mode .cv-item li::before {
     color: #000000 !important;
 }
 
-@media print {
-    body, html {
-        background-color: #FFFFFF !important;
-        color: #000000 !important;
-    }
-    
-    body::before {
-        display: none !important;
-    }
+/* --- Media Queries para Responsividade --- */
 
-    .cv-document, 
-    .cv-section h3, 
-    .cv-header h2, 
-    .cv-header h3, 
-    .cv-contact p, 
-    .cv-item h4, 
-    .cv-item p, 
-    .cv-item .period, 
-    .cv-item li {
-        background-color: #FFFFFF !important;
-        color: #000000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-        border-color: #E0E0E0 !important;
-    }
-
-    .form-section h3::after, .cv-section h3::after {
-        background: #000000 !important;
-        box-shadow: none !important;
-    }
-
-    .app-header,
-    .form-panel,
-    .export-btn,
-    .remove-btn,
-    #welcome-screen,
-    #theme-toggle {
-        display: none !important;
-    }
-
+/* Para telas de até 768px (tablets e smartphones) */
+@media (max-width: 768px) {
     .main-container {
-        display: block !important;
-        width: 100% !important;
-        max-width: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        flex-direction: column; /* Altera o layout para uma coluna */
+        gap: 2rem;
+        margin-top: 2rem;
+        width: 90%; /* Ajusta a largura para dispositivos menores */
     }
-    
-    .preview-panel {
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
+
+    .form-panel, .preview-panel {
+        width: 100%;
+        padding: 1.5rem; /* Diminui o padding para economizar espaço */
     }
-    
+
     .cv-document {
-        box-shadow: none !important;
-        border: 0 !important;
-        width: 100% !important;
-        min-height: auto !important;
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .cv-header h2 {
+        font-size: 2rem;
+    }
+
+    .cv-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .cv-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .cv-item h4,
+    .cv-item p,
+    .cv-item .period {
+        font-size: 1rem; /* Diminui o tamanho da fonte para mobile */
+    }
+
+    .export-btn {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-header p {
+        font-size: 1rem;
     }
 }
