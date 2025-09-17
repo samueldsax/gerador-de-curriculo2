@@ -39,13 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cv-email').innerText = data.personal.email || '';
         document.getElementById('cv-phone').innerText = data.personal.phone || '';
         
-        const personalHasData = Object.values(data.personal).some(val => val.trim() !== '');
+        const personalHasData = Object.values(data.personal).some(val => val && val.trim() !== '');
         document.querySelector('.cv-header').style.display = personalHasData ? 'block' : 'none';
-
 
         document.getElementById('cv-summary').innerText = data.summary || '';
         cvSections.summary.classList.toggle('visible', data.summary.trim() !== '');
-
 
         const expList = document.getElementById('cv-experience-list');
         expList.innerHTML = '';
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         cvSections.experience.classList.toggle('visible', data.experience.length > 0);
 
-
         const eduList = document.getElementById('cv-education-list');
         eduList.innerHTML = '';
         data.education.forEach((item) => {
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             eduList.appendChild(div);
         });
         cvSections.education.classList.toggle('visible', data.education.length > 0);
-
 
         const skillsList = document.getElementById('cv-skills-list');
         skillsList.innerHTML = '';
@@ -216,46 +212,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    exportBtn.addEventListener('click', () => {
+    // --- NOVA LÓGICA PARA EXPORTAR PDF ---
+    exportBtn.addEventListener('click', async () => {
+        // Armazena o estado atual do modo claro para restaurar depois
         const isLightModeActive = body.classList.contains('light-mode-active');
         
+        // Adiciona a classe de impressão para o CSS entrar em ação
         body.classList.add('print-mode');
         
-        const formPanelElement = document.querySelector('.form-panel');
-        const cvDocumentElement = document.querySelector('.cv-document');
-        if (formPanelElement) formPanelElement.style.boxShadow = 'none';
-        if (cvDocumentElement) cvDocumentElement.style.boxShadow = 'none';
+        // Espera um pequeno momento para que as classes CSS sejam aplicadas
+        await new Promise(resolve => setTimeout(resolve, 50));
 
-        setTimeout(() => {
-            html2canvas(cvPreview, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const imgWidth = 210;
-                const pageHeight = 297;
-                const imgHeight = canvas.height * imgWidth / canvas.width;
-                let heightLeft = imgHeight;
-                let position = 0;
+        // Tira uma "foto" de alta resolução do currículo
+        const canvas = await html2canvas(cvPreview, { scale: 3 }); // Aumentei para 3 para ainda mais qualidade
+        
+        // Pega a imagem do canvas
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const pageHeight = 297;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
 
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
 
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
+        // Adiciona páginas se o currículo for maior que uma folha A4
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
 
-                pdf.save('curriculo.pdf');
+        // Salva o arquivo
+        pdf.save('curriculo.pdf');
 
-                body.classList.remove('print-mode');
-                if (!isLightModeActive) {
-                    if (formPanelElement) formPanelElement.style.boxShadow = '';
-                    if (cvDocumentElement) cvDocumentElement.style.boxShadow = '';
-                }
-            });
-        }, 50);
+        // Remove a classe de impressão e restaura a aparência original
+        body.classList.remove('print-mode');
+        if (isLightModeActive) {
+            body.classList.add('light-mode-active');
+        }
     });
 
     updatePreview();
