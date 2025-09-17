@@ -617,15 +617,15 @@ input:focus, textarea:focus {
 /* Para telas de até 768px (tablets e smartphones) */
 @media (max-width: 768px) {
     .main-container {
-        flex-direction: column; /* Altera o layout para uma coluna */
+        flex-direction: column;
         gap: 2rem;
         margin-top: 2rem;
-        width: 90%; /* Ajusta a largura para dispositivos menores */
+        width: 90%;
     }
 
     .form-panel, .preview-panel {
         width: 100%;
-        padding: 1.5rem; /* Diminui o padding para economizar espaço */
+        padding: 1.5rem;
     }
 
     .cv-document {
@@ -648,7 +648,7 @@ input:focus, textarea:focus {
     .cv-item h4,
     .cv-item p,
     .cv-item .period {
-        font-size: 1rem; /* Diminui o tamanho da fonte para mobile */
+        font-size: 1rem;
     }
 
     .export-btn {
@@ -665,50 +665,62 @@ input:focus, textarea:focus {
     }
 }
 
-/* --- Estilos para o modo de impressão (PDF) --- */
+/* --- Estilos de Impressão (Solução de Última Instância) --- */
 @media print {
-    body {
+    /* Define o corpo do documento para impressão, sem margens e sem cor de fundo */
+    body, html {
+        width: 100%;
+        height: 100%;
         margin: 0;
         padding: 0;
-        -webkit-print-color-adjust: exact;
+        background: none;
     }
-    
-    .form-panel, .export-btn, .add-btn, .remove-btn, #theme-toggle, .app-header, #welcome-screen {
+
+    /* Oculta todos os elementos da interface do usuário que não são o currículo */
+    .app-header, .form-panel, .preview-panel .export-btn, .add-btn, .remove-btn, #theme-toggle, #welcome-screen {
         display: none !important;
     }
 
-    .main-container {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
+    /* Redefine e formata o documento do currículo para impressão */
     .cv-document {
         width: 100% !important;
-        min-height: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 2.5cm !important; /* Adiciona uma margem generosa para o conteúdo */
+        font-size: 12pt; /* Tamanho da fonte padrão para impressão */
+        color: #000 !important;
+        background-color: #fff !important;
         box-shadow: none !important;
         border: none !important;
-        background-color: #FFFFFF !important;
-        padding: 2cm !important;
-        margin: 0 !important;
-        color: #000000 !important;
     }
 
+    /* Garante que todos os elementos de texto fiquem na cor preta */
     *, *:before, *:after {
-        color: #000000 !important;
-        background-color: #FFFFFF !important;
-        text-shadow: none !important;
+        color: #000 !important;
+        background-color: transparent !important;
         box-shadow: none !important;
-        border-color: #E0E0E0 !important;
+        text-shadow: none !important;
     }
     
-    .cv-item {
-        margin-bottom: 1cm;
+    /* Evita quebras de página ruins dentro de elementos */
+    .cv-section, .cv-item {
         page-break-inside: avoid;
+    }
+
+    /* Quebra de página para o próximo elemento */
+    .cv-section {
+        margin-top: 2rem;
     }
 
     .cv-section h3 {
         page-break-after: avoid;
+    }
+
+    .cv-item h4 {
+        page-break-after: avoid;
+    }
+
+    .cv-item {
+        margin-bottom: 1rem;
     }
 }
