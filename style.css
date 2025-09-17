@@ -1,30 +1,30 @@
 /* --- Variáveis CSS para Cores (Modo Escuro como Padrão para a Vibe Neon) --- */
 :root {
-    --global-background-start: #2C003E; /* Roxo escuro */
-    --global-background-end: #080016; /* Quase preto */
+    --global-background-start: #2C003E;
+    --global-background-end: #080016;
     
-    --panel-background: rgba(30, 30, 40, 0.9); /* Fundo dos painéis translúcido */
-    --panel-border: rgba(138, 43, 226, 0.3); /* Borda roxa suave */
-    --text-color: #E0E0E0; /* Texto claro */
-    --secondary-text-color: #B0B0B0; /* Texto secundário */
+    --panel-background: rgba(30, 30, 40, 0.9);
+    --panel-border: rgba(138, 43, 226, 0.3);
+    --text-color: #E0E0E0;
+    --secondary-text-color: #B0B0B0;
     
-    --input-background: rgba(45, 45, 60, 0.7); /* Fundo dos inputs translúcido */
-    --input-border: #6A1B9A; /* Borda roxa dos inputs */
-    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7); /* Sombra roxa no foco */
+    --input-background: rgba(45, 45, 60, 0.7);
+    --input-border: #6A1B9A;
+    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7);
 
-    --accent-primary: #BB86FC; /* Roxo vibrante (principal) */
-    --accent-secondary: #03DAC6; /* Ciano/Azul (secundário) */
-    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Sombra para texto de destaque */
+    --accent-primary: #BB86FC;
+    --accent-secondary: #03DAC6;
+    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8);
     
-    --button-gradient-start: #FF00FF; /* Rosa neon */
-    --button-gradient-end: #8A2BE2; /* Roxo brilhante */
+    --button-gradient-start: #FF00FF;
+    --button-gradient-end: #8A2BE2;
     --button-hover-gradient-start: #8A2BE2;
-    --button-hover-gradient-end: #00F6FF; /* Azul ciano neon */
-    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Sombra rosa */
-    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7); /* Sombra roxa */
+    --button-hover-gradient-end: #00F6FF;
+    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
 
-    --item-background: rgba(40, 40, 50, 0.8); /* Fundo de itens da lista */
-    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra suave para itens */
+    --item-background: rgba(40, 40, 50, 0.8);
+    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 
     /* Variáveis para o modo claro */
     --light-background-color: #F8F9FA;
@@ -613,8 +613,6 @@ input:focus, textarea:focus {
 }
 
 /* --- Media Queries para Responsividade --- */
-
-/* Para telas de até 768px (tablets e smartphones) */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
@@ -667,7 +665,6 @@ input:focus, textarea:focus {
 
 /* --- Estilos de Impressão (Solução de Última Instância) --- */
 @media print {
-    /* Define o corpo do documento para impressão, sem margens e sem cor de fundo */
     body, html {
         width: 100%;
         height: 100%;
@@ -676,25 +673,29 @@ input:focus, textarea:focus {
         background: none;
     }
 
-    /* Oculta todos os elementos da interface do usuário que não são o currículo */
     .app-header, .form-panel, .preview-panel .export-btn, .add-btn, .remove-btn, #theme-toggle, #welcome-screen {
         display: none !important;
     }
 
-    /* Redefine e formata o documento do currículo para impressão */
+    .main-container {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
     .cv-document {
         width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 2.5cm !important; /* Adiciona uma margem generosa para o conteúdo */
-        font-size: 12pt; /* Tamanho da fonte padrão para impressão */
+        padding: 2.5cm !important;
+        font-size: 12pt;
         color: #000 !important;
         background-color: #fff !important;
         box-shadow: none !important;
         border: none !important;
     }
 
-    /* Garante que todos os elementos de texto fiquem na cor preta */
     *, *:before, *:after {
         color: #000 !important;
         background-color: transparent !important;
@@ -702,12 +703,10 @@ input:focus, textarea:focus {
         text-shadow: none !important;
     }
     
-    /* Evita quebras de página ruins dentro de elementos */
     .cv-section, .cv-item {
         page-break-inside: avoid;
     }
 
-    /* Quebra de página para o próximo elemento */
     .cv-section {
         margin-top: 2rem;
     }
