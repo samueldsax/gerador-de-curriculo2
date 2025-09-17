@@ -1,30 +1,30 @@
 /* --- Variáveis CSS para Cores (Modo Escuro como Padrão para a Vibe Neon) --- */
 :root {
-    --global-background-start: #2C003E;
-    --global-background-end: #080016;
+    --global-background-start: #2C003E; /* Roxo escuro */
+    --global-background-end: #080016; /* Quase preto */
     
-    --panel-background: rgba(30, 30, 40, 0.9);
-    --panel-border: rgba(138, 43, 226, 0.3);
-    --text-color: #E0E0E0;
-    --secondary-text-color: #B0B0B0;
+    --panel-background: rgba(30, 30, 40, 0.9); /* Fundo dos painéis translúcido */
+    --panel-border: rgba(138, 43, 226, 0.3); /* Borda roxa suave */
+    --text-color: #E0E0E0; /* Texto claro */
+    --secondary-text-color: #B0B0B0; /* Texto secundário */
     
-    --input-background: rgba(45, 45, 60, 0.7);
-    --input-border: #6A1B9A;
-    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7);
+    --input-background: rgba(45, 45, 60, 0.7); /* Fundo dos inputs translúcido */
+    --input-border: #6A1B9A; /* Borda roxa dos inputs */
+    --input-focus-shadow: 0 0 10px rgba(187, 134, 252, 0.7); /* Sombra roxa no foco */
 
-    --accent-primary: #BB86FC;
-    --accent-secondary: #03DAC6;
-    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8);
+    --accent-primary: #BB86FC; /* Roxo vibrante (principal) */
+    --accent-secondary: #03DAC6; /* Ciano/Azul (secundário) */
+    --accent-text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Sombra para texto de destaque */
     
-    --button-gradient-start: #FF00FF;
-    --button-gradient-end: #8A2BE2;
+    --button-gradient-start: #FF00FF; /* Rosa neon */
+    --button-gradient-end: #8A2BE2; /* Roxo brilhante */
     --button-hover-gradient-start: #8A2BE2;
-    --button-hover-gradient-end: #00F6FF;
-    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+    --button-hover-gradient-end: #00F6FF; /* Azul ciano neon */
+    --button-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Sombra rosa */
+    --button-hover-shadow: 0 0 25px rgba(138, 43, 226, 0.7); /* Sombra roxa */
 
-    --item-background: rgba(40, 40, 50, 0.8);
-    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --item-background: rgba(40, 40, 50, 0.8); /* Fundo de itens da lista */
+    --item-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra suave para itens */
 
     /* Variáveis para o modo claro */
     --light-background-color: #F8F9FA;
