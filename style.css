@@ -741,3 +741,51 @@ body.print-mode .cv-item li::before {
         font-size: 1rem;
     }
 }
+
+/* --- Estilos para o modo de impressão (PDF) em telas pequenas --- */
+@media print and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-panel {
+        display: none;
+    }
+
+    .cv-document {
+        width: 100%;
+        min-height: auto;
+        padding: 1rem;
+        box-shadow: none;
+        border: none;
+    }
+
+    .cv-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .cv-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .cv-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .cv-item h4,
+    .cv-item p,
+    .cv-item .period {
+        font-size: 1rem;
+    }
+
+    .cv-item li {
+        font-size: 0.8rem;
+    }
+
+    .export-btn, .add-btn, .remove-btn, #theme-toggle {
+        display: none;
+    }
+}
