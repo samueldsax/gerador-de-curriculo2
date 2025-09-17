@@ -612,83 +612,6 @@ input:focus, textarea:focus {
     box-shadow: var(--button-hover-shadow);
 }
 
-/* --- Estilos para o modo de impressão (PDF) --- */
-body.print-mode {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
-}
-
-body.print-mode .main-container {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-body.print-mode .form-panel,
-body.print-mode .cv-document {
-    background-color: #FFFFFF !important;
-    box-shadow: none !important;
-    border: 0 !important;
-}
-
-body.print-mode *,
-body.print-mode .form-panel h3,
-body.print-mode .cv-section h3,
-body.print-mode .cv-header h2,
-body.print-mode .cv-header h3,
-body.print-mode .form-group label,
-body.print-mode .cv-contact p,
-body.print-mode .cv-item p,
-body.print-mode .cv-item h4,
-body.print-mode .cv-item .period,
-body.print-mode .cv-item li {
-    color: #000000 !important;
-    text-shadow: none !important;
-}
-
-body.print-mode input[type="text"], 
-body.print-mode input[type="email"], 
-body.print-mode input[type="tel"], 
-body.print-mode textarea {
-    background-color: #FFFFFF !important;
-    border: 1px solid #CCCCCC !important;
-    box-shadow: none !important;
-}
-
-body.print-mode .form-section h3::after,
-body.print-mode .cv-section h3::after {
-    background: #000000 !important;
-    box-shadow: none !important;
-}
-
-body.print-mode .cv-item li {
-    background-color: #F0F0F0 !important;
-    border: 1px solid #E0E0E0 !important;
-}
-
-body.print-mode .export-btn,
-body.print-mode .add-btn,
-body.print-mode .remove-btn,
-body.print-mode #theme-toggle,
-body.print-mode .app-header,
-body.print-mode #welcome-screen {
-    display: none !important;
-}
-
-body.print-mode .cv-contact p,
-body.print-mode .cv-item ul li {
-    display: block !important;
-    margin-bottom: 5px !important;
-    color: #000000 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 0 !important;
-    padding: 5px 0 !important;
-}
-body.print-mode .cv-item li::before {
-    content: '• ';
-    color: #000000 !important;
-}
-
 /* --- Media Queries para Responsividade --- */
 
 /* Para telas de até 768px (tablets e smartphones) */
@@ -742,50 +665,50 @@ body.print-mode .cv-item li::before {
     }
 }
 
-/* --- Estilos para o modo de impressão (PDF) em telas pequenas --- */
-@media print and (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-        width: 100%;
+/* --- Estilos para o modo de impressão (PDF) --- */
+@media print {
+    body {
         margin: 0;
         padding: 0;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .form-panel, .export-btn, .add-btn, .remove-btn, #theme-toggle, .app-header, #welcome-screen {
+        display: none !important;
     }
 
-    .form-panel {
-        display: none;
+    .main-container {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
-
+    
     .cv-document {
-        width: 100%;
-        min-height: auto;
-        padding: 1rem;
-        box-shadow: none;
-        border: none;
+        width: 100% !important;
+        min-height: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        background-color: #FFFFFF !important;
+        padding: 2cm !important;
+        margin: 0 !important;
+        color: #000000 !important;
     }
 
-    .cv-header h2 {
-        font-size: 1.8rem;
+    *, *:before, *:after {
+        color: #000000 !important;
+        background-color: #FFFFFF !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        border-color: #E0E0E0 !important;
     }
-
-    .cv-header h3 {
-        font-size: 1.1rem;
+    
+    .cv-item {
+        margin-bottom: 1cm;
+        page-break-inside: avoid;
     }
 
     .cv-section h3 {
-        font-size: 1.2rem;
-    }
-    
-    .cv-item h4,
-    .cv-item p,
-    .cv-item .period {
-        font-size: 1rem;
-    }
-
-    .cv-item li {
-        font-size: 0.8rem;
-    }
-
-    .export-btn, .add-btn, .remove-btn, #theme-toggle {
-        display: none;
+        page-break-after: avoid;
     }
 }
