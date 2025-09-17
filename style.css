@@ -689,65 +689,55 @@ body.print-mode .cv-item li::before {
     color: #000000 !important;
 }
 
-/* Media Print para impressão direta pelo navegador */
-@media print {
-    body, html {
-        background-color: #FFFFFF !important;
-        color: #000000 !important;
-    }
-    
-    body::before {
-        display: none !important;
-    }
+/* --- Media Queries para Responsividade --- */
 
-    .cv-document, 
-    .cv-section h3, 
-    .cv-header h2, 
-    .cv-header h3, 
-    .cv-contact p, 
-    .cv-item h4, 
-    .cv-item p, 
-    .cv-item .period, 
-    .cv-item li {
-        background-color: #FFFFFF !important;
-        color: #000000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-        border-color: #E0E0E0 !important;
-    }
-
-    .form-section h3::after, .cv-section h3::after {
-        background: #000000 !important;
-        box-shadow: none !important;
-    }
-
-    .app-header,
-    .form-panel,
-    .export-btn,
-    .remove-btn,
-    #welcome-screen,
-    #theme-toggle {
-        display: none !important;
-    }
-
+/* Para telas de até 768px (tablets e smartphones) */
+@media (max-width: 768px) {
     .main-container {
-        display: block !important;
-        width: 100% !important;
-        max-width: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        flex-direction: column; /* Altera o layout para uma coluna */
+        gap: 2rem;
+        margin-top: 2rem;
+        width: 90%; /* Ajusta a largura para dispositivos menores */
     }
-    
-    .preview-panel {
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
+
+    .form-panel, .preview-panel {
+        width: 100%;
+        padding: 1.5rem; /* Diminui o padding para economizar espaço */
     }
-    
+
     .cv-document {
-        box-shadow: none !important;
-        border: 0 !important;
-        width: 100% !important;
-        min-height: auto !important;
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .cv-header h2 {
+        font-size: 2rem;
+    }
+
+    .cv-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .cv-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .cv-item h4,
+    .cv-item p,
+    .cv-item .period {
+        font-size: 1rem; /* Diminui o tamanho da fonte para mobile */
+    }
+
+    .export-btn {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-header p {
+        font-size: 1rem;
     }
 }
