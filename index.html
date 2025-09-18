@@ -1,135 +1,165 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Currículo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Gerador de Currículo Futurista</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
     <div id="welcome-screen">
         <div class="welcome-content">
-            <h1 class="welcome-title">Crie seu Currículo</h1>
-            <h2 class="welcome-subtitle">De forma rápida e profissional</h2>
-            <button id="start-btn" class="start-button">Começar</button>
+            <h1 class="welcome-title">Gerador de Currículo</h1>
+            <p class="welcome-subtitle">Uma interface de nova geração para sua carreira.</p>
+            <button id="start-button" class="start-button">INICIAR AGORA</button>
         </div>
     </div>
-
+    
     <header class="app-header">
-        <h1>Gerador de Currículo</h1>
-        <p>Preencha os dados e gere seu currículo em tempo real.</p>
-        <button id="theme-toggle">Alternar Tema</button>
+        <h1>Seu Currículo</h1>
+        <p>Preencha os dados.</p>
     </header>
 
     <main class="main-container">
-        
         <section class="form-panel">
+            <button id="theme-toggle" class="theme-toggle-btn">Alternar Tema</button>
             <form id="cv-form">
-                
                 <div class="form-section">
                     <h3>Informações Pessoais</h3>
                     <div class="form-group">
-                        <label for="full-name">Nome Completo</label>
-                        <input type="text" id="full-name" placeholder="Seu Nome Completo">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" placeholder="Ex: Lucas Silva">
                     </div>
                     <div class="form-group">
-                        <label for="professional-title">Título Profissional</label>
-                        <input type="text" id="professional-title" placeholder="Ex: Desenvolvedor Front-end">
+                        <label for="title">Título Profissional</label>
+                        <input type="text" id="title" placeholder="Ex: Desenvolvedor Front-end">
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" placeholder="seu.email@exemplo.com">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Ex: seu.nome@email.com">
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefone</label>
-                        <input type="tel" id="phone" placeholder="(99) 99999-9999">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Endereço</label>
-                        <input type="text" id="address" placeholder="Sua Cidade, Estado">
+                        <input type="tel" id="phone" placeholder="Ex: (99) 99999-9999">
                     </div>
                 </div>
 
                 <div class="form-section">
                     <h3>Resumo Profissional</h3>
                     <div class="form-group">
-                        <label for="professional-summary">Escreva um breve resumo sobre você.</label>
-                        <textarea id="professional-summary" rows="4" placeholder="Fale sobre suas principais qualidades e objetivos."></textarea>
+                        <textarea id="summary" rows="5" placeholder="Ex: Profissional com 5 anos de experiência em..."></textarea>
                     </div>
                 </div>
 
                 <div class="form-section">
                     <h3>Experiência Profissional</h3>
-                    <div id="experience-list" class="item-list"></div>
-                    <button type="button" id="add-experience-btn" class="add-btn">Adicionar Experiência</button>
+                    <div class="form-group">
+                        <label for="exp-title">Título do Cargo</label>
+                        <input type="text" id="exp-title" placeholder="Ex: Analista de Sistemas Pleno">
+                    </div>
+                    <div class="form-group">
+                        <label for="exp-company">Empresa</label>
+                        <input type="text" id="exp-company" placeholder="Ex: Empresa X Tecnologia">
+                    </div>
+                    <div class="form-group">
+                        <label for="exp-city">Cidade</label>
+                        <input type="text" id="exp-city" placeholder="Ex: São Paulo, SP">
+                    </div>
+                    <div class="form-group">
+                        <label for="exp-period">Período</label>
+                        <input type="text" id="exp-period" placeholder="Ex: Jan 2021 - Presente">
+                    </div>
+                    <div class="form-group">
+                        <label for="exp-description">Descrição</label>
+                        <textarea id="exp-description" rows="3" placeholder="Ex: Desenvolvi novas funcionalidades e otimizei..."></textarea>
+                    </div>
+                    <button type="button" class="add-btn" id="add-exp">Adicionar Experiência</button>
+                    <div class="item-list" id="exp-list"></div>
                 </div>
 
                 <div class="form-section">
                     <h3>Educação</h3>
-                    <div id="education-list" class="item-list"></div>
-                    <button type="button" id="add-education-btn" class="add-btn">Adicionar Educação</button>
+                    <div class="form-group">
+                        <label for="edu-school">Instituição</label>
+                        <input type="text" id="edu-school" placeholder="Ex: Universidade Federal do Rio de Janeiro">
+                    </div>
+                    <div class="form-group">
+                        <label for="edu-degree">Grau / Curso</label>
+                        <input type="text" id="edu-degree" placeholder="Ex: Bacharel em Ciência da Computação">
+                    </div>
+                    <div class="form-group">
+                        <label for="edu-period">Período</label>
+                        <input type="text" id="edu-period" placeholder="Ex: 2017 - 2021">
+                    </div>
+                    <button type="button" class="add-btn" id="add-edu">Adicionar Educação</button>
+                    <div class="item-list" id="edu-list"></div>
                 </div>
 
                 <div class="form-section">
                     <h3>Habilidades</h3>
-                    <div id="skills-list" class="item-list"></div>
-                    <button type="button" id="add-skill-btn" class="add-btn">Adicionar Habilidade</button>
+                    <div class="form-group">
+                        <label for="skill">Habilidade</label>
+                        <input type="text" id="skill" placeholder="Ex: JavaScript, Python, UI/UX Design">
+                    </div>
+                    <button type="button" class="add-btn" id="add-skill">Adicionar Habilidade</button>
+                    <div class="item-list" id="skills-list"></div>
                 </div>
-
+                
                 <div class="form-section">
                     <h3>Idiomas</h3>
-                    <div id="languages-list" class="item-list"></div>
-                    <button type="button" id="add-language-btn" class="add-btn">Adicionar Idioma</button>
+                    <div class="form-group">
+                        <label for="language">Idioma</label>
+                        <input type="text" id="language" placeholder="Ex: Inglês Avançado">
+                    </div>
+                    <button type="button" class="add-btn" id="add-lang">Adicionar Idioma</button>
+                    <div class="item-list" id="lang-list"></div>
                 </div>
             </form>
         </section>
 
-        <section class="preview-panel">
+        <aside class="preview-panel">
             <div id="cv-preview" class="cv-document">
-                
-                <div class="cv-header">
-                    <h2 id="cv-full-name"></h2>
-                    <h3 id="cv-professional-title"></h3>
+                <header class="cv-header">
+                    <h2 id="cv-name">Seu Nome</h2>
+                    <h3 id="cv-title">Seu Título Profissional</h3>
                     <div class="cv-contact">
-                        <p id="cv-contact-info"></p>
+                        <p id="cv-email">email@exemplo.com</p>
+                        <p id="cv-phone">(99) 99999-9999</p>
                     </div>
-                </div>
-
-                <div id="cv-summary-section" class="cv-section">
+                </header>
+                
+                <section class="cv-section" id="summary-section">
                     <h3>Resumo</h3>
-                    <p id="cv-summary"></p>
-                </div>
-
-                <div id="cv-experience-section" class="cv-section">
-                    <h3>Experiência Profissional</h3>
-                    <div id="cv-experience-content"></div>
-                </div>
-
-                <div id="cv-education-section" class="cv-section">
+                    <p id="cv-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, est.</p>
+                </section>
+                
+                <section class="cv-section" id="experience-section">
+                    <h3>Experiência</h3>
+                    <div id="cv-experience-list"></div>
+                </section>
+                
+                <section class="cv-section" id="education-section">
                     <h3>Educação</h3>
-                    <div id="cv-education-content"></div>
-                </div>
+                    <div id="cv-education-list"></div>
+                </section>
 
-                <div id="cv-skills-section" class="cv-section">
+                <section class="cv-section" id="skills-section">
                     <h3>Habilidades</h3>
-                    <ul id="cv-skills-content"></ul>
-                </div>
+                    <ul id="cv-skills-list"></ul>
+                </section>
 
-                <div id="cv-languages-section" class="cv-section">
+                <section class="cv-section" id="languages-section">
                     <h3>Idiomas</h3>
-                    <ul id="cv-languages-content"></ul>
-                </div>
-
+                    <ul id="cv-languages-list"></ul>
+                </section>
             </div>
-            <button id="export-pdf-btn" class="export-btn">Exportar para PDF</button>
-        </section>
+            
+            <button id="export-btn" class="export-btn">Exportar para PDF</button>
+        </aside>
     </main>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>
