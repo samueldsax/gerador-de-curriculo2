@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="Rqpaw0hDLD_MxzO1oAi3ilUri88qbCIyjdSHeI59V-0" />
-  <title>Gerador de Currículo Futurista – Crie seu Currículo Online em PDF</title>
+
+  <title>Gerador de Currículo Futurista</title>
 
   <meta name="description" content="Crie um currículo moderno e profissional com o Gerador de Currículo Futurista. Interface simples, personalização fácil e exportação em PDF.">
-
   <meta name="keywords" content="gerador de currículo, currículo online, exportar PDF, criar CV, currículo futurista">
-
   <meta http-equiv="content-language" content="pt-BR">
-
   <link rel="canonical" href="https://seu-dominio-aqui.com/">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gerador de Currículo Futurista">
   <meta property="og:description" content="Crie e exporte seu currículo online com um design moderno e intuitivo.">
@@ -22,14 +18,11 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gerador de Currículo Futurista">
-  <meta name="twitter:description" content="Monte seu CV profissional em minutos e exporte em PDF.">
+  <meta name="twitter:description" content="Monte seu Currículo profissional em minutos e exporte em PDF.">
   <meta name="twitter:image" content="https://seu-dominio-aqui.com/imagem-preview.jpg">
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
   <link rel="stylesheet" href="style.css">
-
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="script.js" defer></script>
@@ -39,7 +32,7 @@
   <div id="welcome-screen" aria-label="Tela de boas-vindas">
     <div class="welcome-content">
       <h1 class="welcome-title">Gerador de Currículo Futurista</h1>
-      <p class="welcome-subtitle">Crie seu currículo com tecnologia de ponta e design moderno.</p>
+      <p class="welcome-subtitle">Crie seu Currículo com tecnologia de ponta e design moderno.</p>
       <button id="start-button" class="start-button">INICIAR AGORA</button>
     </div>
   </div>
@@ -57,46 +50,46 @@
           <h2>Informações Pessoais</h2>
           <div class="form-group">
             <label for="name">Nome Completo</label>
-            <input type="text" id="name" placeholder="Ex: Lucas Silva">
+            <input type="text" id="name" placeholder="Ex: Ana Pereira">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Ex: seu.nome@email.com">
+            <input type="email" id="email" placeholder="Ex: ana.pereira@email.com">
           </div>
           <div class="form-group">
             <label for="phone">Telefone</label>
-            <input type="tel" id="phone" placeholder="Ex: (99) 99999-9999">
+            <input type="tel" id="phone" placeholder="Ex: (21) 91234-5678">
           </div>
         </div>
 
         <div class="form-section">
           <h2>Resumo Profissional</h2>
           <div class="form-group">
-            <textarea id="summary" rows="5" placeholder="Ex: Profissional com 5 anos de experiência em..."></textarea>
+            <textarea id="summary" rows="5" placeholder="Ex: Profissional com experiência em atendimento ao cliente, vendas e rotinas administrativas. Organizado, pontual e com boa comunicação."></textarea>
           </div>
         </div>
 
         <div class="form-section">
           <h2>Experiência Profissional</h2>
           <div class="form-group">
-            <label for="exp-title">Título do Cargo</label>
-            <input type="text" id="exp-title" placeholder="Ex: Analista de Sistemas Pleno">
+            <label for="exp-title">Prosissão</label>
+            <input type="text" id="exp-title" placeholder="Ex: Atendente de Loja / Coordenador de Estoque / Motorista Entregador">
           </div>
           <div class="form-group">
             <label for="exp-company">Empresa</label>
-            <input type="text" id="exp-company" placeholder="Ex: Empresa X ">
+            <input type="text" id="exp-company" placeholder="Ex: Supermercado Central / Transportes Silva">
           </div>
           <div class="form-group">
             <label for="exp-city">Cidade</label>
-            <input type="text" id="exp-city" placeholder="Ex: São Paulo, SP">
+            <input type="text" id="exp-city" placeholder="Ex: Rio de Janeiro, RJ">
           </div>
           <div class="form-group">
             <label for="exp-period">Período</label>
-            <input type="text" id="exp-period" placeholder="Ex: Jan 2021 - Presente">
+            <input type="text" id="exp-period" placeholder="Ex: Fev 2019 - Mar 2023">
           </div>
           <div class="form-group">
             <label for="exp-description">Descrição</label>
-            <textarea id="exp-description" rows="3" placeholder="Ex: Desenvolvi novas funcionalidades e otimizei..."></textarea>
+            <textarea id="exp-description" rows="3" placeholder="Ex: Atendimento ao público, organização de estoque, fechamento de caixa e suporte à gerência."></textarea>
           </div>
           <button type="button" class="add-btn" id="add-exp">Adicionar Experiência</button>
           <div class="item-list" id="exp-list"></div>
@@ -106,15 +99,15 @@
           <h2>Educação</h2>
           <div class="form-group">
             <label for="edu-school">Instituição</label>
-            <input type="text" id="edu-school" placeholder="Ex: Universidade Federal do Rio de Janeiro">
+            <input type="text" id="edu-school" placeholder="Ex: Escola Técnica Municipal / Universidade Estadual">
           </div>
           <div class="form-group">
             <label for="edu-degree">Curso</label>
-            <input type="text" id="edu-degree" placeholder="Ex: Bacharel em Ciência da Computação">
+            <input type="text" id="edu-degree" placeholder="Ex: Ensino Médio Completo / Técnico em Administração">
           </div>
           <div class="form-group">
             <label for="edu-period">Período</label>
-            <input type="text" id="edu-period" placeholder="Ex: 2017 - 2021">
+            <input type="text" id="edu-period" placeholder="Ex: 2015 - 2018">
           </div>
           <button type="button" class="add-btn" id="add-edu">Adicionar Educação</button>
           <div class="item-list" id="edu-list"></div>
@@ -124,7 +117,7 @@
           <h2>Habilidades</h2>
           <div class="form-group">
             <label for="skill">Habilidade</label>
-            <input type="text" id="skill" placeholder="Ex: JavaScript, Python, UI/UX Design">
+            <input type="text" id="skill" placeholder="Ex: Atendimento ao cliente, Caixa, Organização de Estoque, Pacote Office">
           </div>
           <button type="button" class="add-btn" id="add-skill">Adicionar Habilidade</button>
           <div class="item-list" id="skills-list"></div>
@@ -134,7 +127,7 @@
           <h2>Idiomas</h2>
           <div class="form-group">
             <label for="language">Idioma</label>
-            <input type="text" id="language" placeholder="Ex: Inglês Avançado">
+            <input type="text" id="language" placeholder="Ex: Português Nativo / Inglês Básico">
           </div>
           <button type="button" class="add-btn" id="add-lang">Adicionar Idioma</button>
           <div class="item-list" id="lang-list"></div>
@@ -149,13 +142,13 @@
           <h3 id="cv-title">Seu Título Profissional</h3>
           <div class="cv-contact">
             <p id="cv-email">email@exemplo.com</p>
-            <p id="cv-phone">(99) 99999-9999</p>
+            <p id="cv-phone">(99) 01234-5678</p>
           </div>
         </header>
 
         <section class="cv-section" id="summary-section">
           <h3>Resumo</h3>
-          <p id="cv-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, est.</p>
+          <p id="cv-summary">Profissional dedicado com experiência em atendimento, vendas e rotinas administrativas.</p>
         </section>
 
         <section class="cv-section" id="experience-section">
@@ -178,7 +171,6 @@
           <ul id="cv-languages-list"></ul>
         </section>
       </div>
-
       <button id="export-btn" class="export-btn">Exportar para PDF</button>
     </aside>
   </main>
